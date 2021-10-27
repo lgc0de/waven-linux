@@ -2,7 +2,7 @@
 dir="$PWD"
 
 # change version number to downgrade to another old build
-winever="6.0"
+winever="6.14-4"
 
 # use for wine
 wine="$dir/lutris-$winever-x86_64/bin/wine"
@@ -12,7 +12,7 @@ launcher="$dir/wine-waven/drive_c/Program Files/Ankama/Ankama Launcher/Ankama La
 exec="$dir/ankama-launcher.exe"
 
 # use for dxvk
-dxvkver="1.8"
+dxvkver=$(curl --silent "https://api.github.com/repos/doitsujin/dxvk/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")' | cut -d'v' -f2)
 
 # create new script
 script=$(cat <<EOF
