@@ -3,7 +3,7 @@ dir="$PWD"
 lutriswinepath="/home/$USER/.local/share/lutris/runners/wine"
 
 # change version number to downgrade to another old build
-winever="6.14-4"
+winever="6.21-4"
 
 # use for wine
 wine="$dir/lutris-$winever-x86_64/bin/wine"
