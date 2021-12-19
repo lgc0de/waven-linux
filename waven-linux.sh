@@ -3,7 +3,11 @@ dir="$PWD"
 lutriswinepath="/home/$USER/.local/share/lutris/runners/wine"
 
 # change version number to downgrade to another old build
-winever="6.21-4"
+winever="6.21-6"
+
+# fsync support (only work if you have a kernel with futex sync support)
+# put 0 if you want to disable fsync
+fsync=1
 
 # use for wine
 wine="$dir/lutris-$winever-x86_64/bin/wine"
@@ -18,7 +22,7 @@ dxvkver=$(curl --silent "https://api.github.com/repos/doitsujin/dxvk/releases/la
 # create new script
 script=$(cat <<EOF
 #!/bin/sh
-WINEPREFIX=$prefix WINEDLLOVERRIDES=$overrides "$wine" "$launcher" > /dev/null 2>&1 &
+WINEPREFIX=$prefix WINEFSYNC=$fsync WINEDLLOVERRIDES=$overrides "$wine" "$launcher" > /dev/null 2>&1 &
 EOF
 )
 
